@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:slider_state_management/schedule.dart';
 
 class MySlider extends StatefulWidget {
   @override
@@ -16,9 +18,11 @@ class _MySliderState extends State<MySlider> {
 
   @override
   Widget build(BuildContext context) {
+    final schedule = Provider.of<MySchedule>(context);
+
     return Slider(
-      value: _value,
-      onChanged: _onValueChanged,
+      value: schedule.stateManagementTime,
+      onChanged: (value) => schedule.stateManagementTime = value,
     );
   }
 }
